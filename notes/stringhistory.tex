@@ -1,0 +1,878 @@
+\documentclass[10pt]{article}
+\usepackage[a4paper, left=0.7in, right=0.7in, top=0.7in, bottom=0.7in]{geometry}
+% \usepackage[paperwidth=16.666cm, paperheight=27.144cm, margin=1in]{geometry}
+% \usepackage{jheppub} % for details on the use of the package, please see the JINST-author-manual
+\usepackage{lineno}
+\usepackage{mathdots}
+\usepackage{setspace}
+\usepackage{lipsum}
+
+\usepackage{psfrag}
+\usepackage{lscape}
+
+\usepackage{float}
+\usepackage{subfigure}
+\usepackage{bm}
+\usepackage{slashed}
+\usepackage{simplewick}
+\usepackage{simpler-wick}
+
+\usepackage{bbm}
+\usepackage{amsthm} 
+
+\usepackage{url}
+\usepackage{color}
+
+\usepackage{bbold}
+
+
+%\usepackage{hyperref}
+\usepackage{amsfonts,amsmath,amssymb,mathrsfs}
+%\usepackage{showlabels}
+\usepackage{soul}
+\usepackage{graphicx}
+%\usepackage[usenames,dvipsnames]{color}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{amsfonts}
+\usepackage{epsfig}
+\usepackage[section]{placeins}
+%\usepackage{cite}
+\usepackage[colorlinks=true,linktocpage=true,linkcolor=blue,citecolor=blue]{hyperref}
+\usepackage{tensor}
+\usepackage{multirow}
+\usepackage[fontset=fandol]{ctex}
+% \usepackage[utf8]{inputenc}
+% \usepackage{cite}
+\usepackage{siunitx}
+
+\graphicspath{{Figures/}}
+\usepackage{sectsty}
+% \sectionfont{\huge\bfseries} % 一级标题：\Large 和粗体
+% \sectionfont{\LARGE} % 二级标题：\large 和斜体
+% \subsectionfont{\Large}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage[framemethod=TikZ]{mdframed} % package used to make the fancy boxes
+
+\usepackage[dvipsnames]{xcolor}
+
+
+\newcounter{ex}[section]\setcounter{ex}{0}
+\renewcommand{\theex}{\arabic{section}}
+\newenvironment{ex}[2][]{%
+\refstepcounter{ex}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=NavyBlue!40]
+{\strut Exercises Section~\theex};}}
+}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=NavyBlue!40]
+{\strut Exercises Section~\theex:~#1};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=NavyBlue!40,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
+
+
+
+\newcounter{example}[section]\setcounter{example}{1}
+\renewcommand{\theexample}{\arabic{section}.\arabic{example}}
+\newenvironment{example}[2][]{%
+\refstepcounter{example}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=Goldenrod!40]
+{\strut Example~\theexample};}}
+}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=Goldenrod!40]
+{\strut Example~\theexample:~#1};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=Goldenrod!40,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
+
+
+\newcounter{dig}[section]\setcounter{dig}{1}
+\renewcommand{\thedig}{\arabic{section}.\arabic{dig}}
+\newenvironment{dig}[2][]{%
+\refstepcounter{dig}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=WildStrawberry!40]
+{\strut Digression~\thedig};}}
+}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=WildStrawberry!40]
+{\strut Digression~\thedig:~#1};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=WildStrawberry!40,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
+
+
+\newcounter{definition}[section]\setcounter{definition}{1}
+\renewcommand{\thedefinition}{\arabic{section}.\arabic{definition}}
+\newenvironment{definition}[2][]{%
+\refstepcounter{definition}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=NavyBlue!40]
+{\strut Definition~\thedefinition};}}
+}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=NavyBlue!40]
+{\strut Definition~\thedefinition:~#1};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=NavyBlue!40,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
+
+
+\newcounter{solution}[section]\setcounter{solution}{1}
+\renewcommand{\thesolution}{\arabic{section}.\arabic{solution}}
+\newenvironment{solution}[2][]{%
+\refstepcounter{solution}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=ForestGreen!40]
+{\strut Solution~\thesolution};}}
+}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=ForestGreen!40]
+{\strut Solution~\thesolution:~#1};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=ForestGreen!40,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
+
+
+\numberwithin{equation}{section}
+\newtheorem{exe}{Exercise}
+\newtheorem{sol}{Solution}
+\renewcommand*{\theexe}{\arabic{section}.\arabic{exe}}
+\renewcommand*{\thesol}{\arabic{section}.\arabic{sol}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\title{\boldmath 弦论历史简介}
+
+% Collaborations
+
+
+% \collaboration{\includegraphics[height=17mm]{collabroation-logo}\\[6pt]
+%  XXX collaboration}
+
+%% or
+%% [B] If "on behalf of"
+% \collaboration[c]{on behalf of XXX collaboration}
+
+
+% Authors
+% The "\slashede" macro will give a warning: "Ignoring empty anchor...", you can safely ignore it.
+
+%% [A] simple case: 2 authors, same institution
+\author{ Yutong Huang}
+
+
+%% or, e.g.
+%% [B] more complex case: 4 authors, 3 institutions, 2 footnotes
+% \author[a,b]{F. Irst,\slashede{Now at another university}}
+% \author[c]{S. Econd,}
+% \author[a,2]{T. Hird\slashede{Also at Some University.}}
+% \author[c,2]{and Fourth}
+% \affiliation[a]{Institution_1,\\Address, Country}
+% \affiliation[b]{Institution_2,\\Address, Country}
+% \affiliation[c]{Institution_3,\\Address, Country}
+
+
+%        
+
+\begin{document}
+
+\maketitle
+
+
+\hrule
+
+\tableofcontents
+
+\vspace{2em}
+\hrule
+
+\newpage
+
+
+
+\section{何为弦论}
+
+在正式开始这个弦论讨论班之前, 首先明确什么是弦论, 它与场论、特别是基于点粒子的场论, 有什么区别. 我们的讨论将以微扰弦论为主. 
+微扰弦论首先是一种定义在二维世界面上的量子场论：基本场是从世界面到靶时空的映射 $X:\Sigma\to\mathcal M$, 散射振幅由不同拓扑世界面上的路径积分给出.
+与点粒子相比, 点粒子的量子力学(即一次量子化)是定义在一维世界线上的量子场论, 基本场是世界线到靶时空的映射 $X:\mathcal{T}\to\mathcal M$.
+对点粒子模型进行一次量子化后, 得到的Hilbert空间是靶时空上的可归一函数空间(或某些纤维丛的截面)；于是任意单粒子态可以为靶时空上的波函数.
+如果考虑粒子的产生和湮灭, 进入任意多粒子的Fock空间, 则需要把场当做算符进行量子化, 即所谓二次量子化, 得到的理论即为靶时空上的量子场论.
+在本讨论班中, 我们将要讨论的弦论指的就是对从弦世界面映射到靶时空的二维共形场论进行一次量子化后得到的理论.
+实际上我们也可以用点粒子一次量子化得到的世界线形式描述量子场论: 引入世界线交点即相互作用顶点和顶点算符, 对世界线积分得到传播子, 从而计算Feynman图.
+并且由于弦论世界面的特殊性, 一次量子化后的理论不需要额外引入相互作用顶点就可以描述弦数目变化的相互作用, 在世界面上插入顶点算符并做路径积分即可计算对应的Feynman图. 
+但是一次量子化弦论中, 插入的顶点算符必须满足共形不变性, 这相当于在壳条件; 若希望像普通量子场论那样直接描述弦的离壳相互作用, 则进一步进入弦场论, 把整根弦的量子态提升为场算符.
+因为弦场论的难度和复杂程度将远超普通弦论的范围, 我们不予讨论; 一次量子化弦论散射振幅的红外发散, 质量重整化, 紫外有限性, 都需要在弦场论中研究, 或者说弦微扰论在弦场论中才是完备定义的. 
+尽管如此, 撇去这些细节, 弦论的大部分成果都可以在一次量子化的层面取得, 因此本讨论班我们也只会涉及一次量子化弦论.
+\begin{equation}
+\begin{array}{ccl}
+\text{点粒子的第一量子化} &:& \text{世界线上的一维 sigma model},\\
+\text{微扰弦论} &:& \text{与二维引力耦合的世界面 sigma model/CFT},\\
+\text{弦场论} &:& \text{弦的二次量子化以及离壳相互作用理论}.
+\end{array}
+\end{equation}
+
+\subsection{点粒子：从世界线 sigma model 到靶时空量子场论}
+
+设靶时空为带度规 $G_{\mu\nu}(X)$ 的流形 $\mathcal M$. 一个相对论性点粒子的运动由下面的映射描述:
+\begin{equation}
+X:\mathcal{T}\longrightarrow\mathcal M,
+\qquad
+\tau\longmapsto X^\mu(\tau),
+\end{equation}
+其中 $\mathcal{T}$ 是一维世界线. 因此点粒子就可以看成一维 nonlinear sigma model. 引入世界线 einbein $e(\tau)$ 后, 质量为 $m$ 的自由粒子的作用量为
+\begin{equation}
+S_{\mathrm{pp}}[X,e]
+=\frac12\int d\tau
+\left[e^{-1}G_{\mu\nu}(X)\dot X^\mu\dot X^\nu-e m^2\right].
+\label{eq:worldline-particle-action}
+\end{equation}
+这个作用量在世界线重参数化 $\tau\mapsto\tau'(\tau)$ 下不变. $e$ 没有独立传播自由度；对它变分给出质量壳约束
+\begin{equation}
+G^{\mu\nu}p_\mu p_\nu+m^2=0.
+\end{equation}
+消去 $e$ 后则得到长度
+\begin{equation}
+S_{\mathrm{pp}}=-m\int ds
+=-m\int d\tau\sqrt{-G_{\mu\nu}(X)\dot X^\mu\dot X^\nu}.
+\end{equation}
+
+对 $X^\mu(\tau)$ 和 $e(\tau)$ 作路径积分是相对论性自由点粒子的一次量子化, 得到的理论是世界线上的 0+1 维量子场论, 即量子力学.
+第一量子化得到的Hilbert空间中的态可以由波函数 $\psi(x)$ 描述, 波函数是靶时空上的函数; 自由点标量粒子质量壳约束即为 Klein-Gordon 方程.
+可以对一段世界线上的场进行路径积分, 结果是从初态到末态的映射$\langle x_f|e^{-iT\widehat H}|x_i\rangle$, 再对Schwinger proper-time $T>0$积分后可得传播子.
+相对论性过程允许粒子产生和湮灭, 固定粒子数的量子力学并不是完整框架. 二次量子化把靶时空上的波函数 $\psi(x)$ 提升为场算符 $\phi(x)$, 并对所有场构型积分
+\begin{equation}
+S_{\mathrm{QFT}}[\phi]
+=\int_{\mathcal M}d^Dx\sqrt{|G|}
+\left[
+\frac12G^{\mu\nu}\partial_\mu\phi\partial_\nu\phi
++\frac12m^2\phi^2+V_{\mathrm{int}}(\phi)
+\right],
+\qquad
+Z=\int\mathcal D\phi\,e^{iS_{\mathrm{QFT}}[\phi]}.
+\end{equation}
+QFT 的 Feynman 图也可以重新写成 worldline 图：每条边是式世界线传播子的路径积分, 相互作用顶点描述世界线的连接和分裂, 闭合回路对应粒子圈. 因而
+\begin{equation}
+\boxed{
+\text{一条世界线的量子理论给出单粒子传播；}
+\quad
+\text{对任意粒子数及世界线图求和给出靶时空 QFT.}
+}
+\end{equation}
+
+\subsection{微扰弦论：与二维引力耦合的 nonlinear sigma model}
+
+一根弦在时空中的运动扫出二维世界面 $\Sigma$, 其嵌入坐标是映射
+\begin{equation}
+X:\Sigma\longrightarrow\mathcal M,
+\qquad
+(\sigma^1,\sigma^2)\longmapsto X^\mu(\sigma).
+\end{equation}
+给定靶空间度规 $G_{\mu\nu}(X)$ 后, 最基本的 Polyakov 作用量为
+\begin{equation}
+S_{\mathrm P}[X,h]
+=\frac{1}{4\pi\alpha'}
+\int_\Sigma d^2\sigma\sqrt{h}\,
+h^{ab}G_{\mu\nu}(X)
+\partial_aX^\mu\partial_bX^\nu,
+\label{eq:polyakov-sigma-model}
+\end{equation}
+其中 $h_{ab}$ 是世界面度规, $\alpha'$ 决定弦长 $\ell_s^2\sim\alpha'$ 以及弦张力 $T=(2\pi\alpha')^{-1}$. 更一般的背景还包括 $B$ 场和 dilaton：
+\begin{equation}
+S_{B,\Phi}
+=\frac{i}{4\pi\alpha'}\int_\Sigma
+d^2\sigma\,\epsilon^{ab}B_{\mu\nu}(X)
+\partial_aX^\mu\partial_bX^\nu
++\frac{1}{4\pi}\int_\Sigma d^2\sigma\sqrt h\,
+\Phi(X)R^{(2)}[h].
+\end{equation}
+
+若把 $h_{ab}$ 当作预先给定的背景, 式 \eqref{eq:polyakov-sigma-model} 就是普通的二维 NLSM：世界面上的量子场是 $X^\mu$, 而世界面几何是给定的外部数据. 在弦论中则还必须对 $h_{ab}$ 积分, 即将这个二维NLSM与引力耦合(二维纯引力没有局域传播自由度), 并除去二维微分同胚和 Weyl 变换的规范体积：
+\begin{equation}
+\mathcal A_n
+=\sum_{\text{topology }\Sigma}
+g_s^{-\chi(\Sigma)}
+\int
+\frac{\mathcal D h\,\mathcal D X}
+{\mathrm{Vol}(\mathrm{Diff}\times\mathrm{Weyl})}
+\,e^{-S_{\mathrm P}[X,h]-S_{B,\Phi}}
+\prod_{i=1}^n V_i.
+\label{eq:string-worldsheet-path-integral}
+\end{equation}
+这里 $V_i$ 是外部弦态的 vertex operators, $\chi(\Sigma)$ 是 Euler 示性数. 对闭定向世界面 $\chi=2-2g$, 因而 genus $g$ $n$点振幅的贡献带有 $g_s^{2g-2+n}$. 这就是弦微扰论的圈展开. 在对世界面度规积分时我们选取共形规范, 但这不能完全固定所有规范自由度, 需要引入鬼场作为补偿, 以及对世界面模空间进行积分. 
+
+世界面 Weyl 对称性还必须在量子层面保持. 对一般背景, 这一要求等价于二维 NLSM 的 beta functions 消失. 例如最低阶有
+\begin{equation}
+\beta^G_{\mu\nu}
+=\alpha'\left(
+R_{\mu\nu}-\frac14H_{\mu\rho\sigma}H_\nu{}^{\rho\sigma}
++2\nabla_\mu\nabla_\nu\Phi
+\right)+O(\alpha'^2)=0.
+\end{equation}
+这些方程正是靶时空背景场的运动方程. 在平直背景中, 物质与鬼的总共形反常消失又给出玻色弦的 $D=26$ 和超弦的 $D=10$. 因此弦论不是在任意背景上都能一致定义的普通二维 NLSM；世界面量子一致性本身会约束靶时空的维数和动力学.
+
+在一次量子化框架中, 一个世界面共形场论的 Hilbert 空间给出单弦态空间(包含物理态和非物理态), 顶点算符表示外部弦态(满足BRST条件), 世界面上的关联函数给出弦的散射振幅. 世界面的连接与分裂已经自然地描述了靶时空中的弦相互作用, 所以计算微扰散射振幅并不要求预先建立弦场论. 一般意义上的“微扰弦论”, 通常指的就是这种一次量子化的世界面形式, 并且这种形式也启发了量子场论的世界线形式的研究.
+
+\subsection{弦场论：弦的二次量子化及其困难}
+
+弦场论试图把点粒子量子场论的逻辑推广到弦. 点粒子场 $\phi(x)$ 给时空中每一点赋予一个场值；弦场则形式上是定义在开弦或闭弦构型空间上的泛函,
+\begin{equation}
+\Psi[X(\sigma)],
+\end{equation}
+或者说, $|\Psi\rangle$ 是包含物质和鬼的第一量子化弦 Hilbert 空间中具有指定鬼数的态. 展开 $|\Psi\rangle$ 会同时得到靶时空中的无穷多个分量场. 例如开弦场和闭弦场分别具有展开
+\begin{equation}
+\begin{split}
+|\Psi_{\mathrm{open}}\rangle
+&=T(x)|0\rangle
++A_\mu(x)\alpha_{-1}^\mu|0\rangle+\cdots,\\
+|\Psi_{\mathrm{closed}}\rangle
+&=\Phi(x)|0\rangle
++h_{\mu\nu}(x)\alpha_{-1}^\mu\widetilde\alpha_{-1}^\nu|0\rangle+\cdots.
+\end{split}
+\end{equation}
+其中具体出现哪些分量取决于开弦、闭弦和所选理论. 弦场论的作用量应同时产生这些场的运动方程、规范对称性以及弦的连接和分裂顶点；其 Feynman 图必须恰好覆盖世界面模空间.
+
+Witten 的 cubic open bosonic string field theory 给出一个代表性的形式
+\begin{equation}
+S_{\mathrm{OSFT}}
+=-\frac{1}{g_o^2}
+\left[
+\frac12\langle\Psi,Q_B\Psi\rangle
++\frac13\langle\Psi,\Psi*\Psi\rangle
+\right],
+\label{eq:witten-osft}
+\end{equation}
+其中 $Q_B$ 是 BRST 算符, $*$ 表示把两根开弦的半边粘接为第三根开弦, $\langle\ ,\ \rangle$ 是 BPZ pairing. 相应规范变换为
+\begin{equation}
+\delta\Psi
+=Q_B\Lambda+\Psi*\Lambda-\Lambda*\Psi.
+\end{equation}
+式 \eqref{eq:witten-osft} 看起来只是三次作用量, 但每个弦场都包含无穷多个时空场, $*$ 乘积在靶时空中是含无穷高阶导数的非局域运算. 闭弦场论通常还需要无穷多个相互作用顶点, 其规范结构由 $L_\infty$ algebra 和 Batalin-Vilkovisky master equation 组织；开弦场论则自然涉及 $A_\infty$ 结构. Witten 的开弦场论原始构造见 \href{https://doi.org/10.1016/0550-3213(86)90155-0}{E. Witten, \textit{Noncommutative Geometry and String Field Theory} (1986)}.
+
+目前已经有玻色弦、Type II、heterotic 等所有闭超弦以及多种开超弦的规范不变微扰弦场论构造. 困难在于把它们变成像普通低能量子场论一样统一、易算并且非微扰完备的定义：
+\begin{itemize}
+\item 弦场包含无穷多个分量场, 相互作用具有弦尺度的非局域性, 实际计算通常需要 level truncation 或其他近似；
+\item 规范对称性高度冗余, 必须同时处理 BRST ghosts、BV 量子化以及世界面模空间的无遗漏、无重复分割；
+\item 超弦还涉及 picture changing、Ramond sector 和接触奇点等额外技术问题；
+\item 开弦 loop 含有闭弦退化通道, 因而量子层面通常需要把开弦和闭弦 sector 一起纳入；
+\item 多数构造从一个已知的一致 worldsheet CFT 出发, 因而是围绕给定背景展开的. 如何把拓扑不同的背景、时空涌现和所有真空纳入单一的 background-independent 形式仍不清楚；
+\item 在量子层面还要处理 tadpoles、真空移动、动量积分轮廓和非微扰效应. 一个给定背景上的微扰作用量并不自动等于弦论的全局非微扰定义.
+\end{itemize}
+关于现代弦场论的构造范围及这些问题, 可参见 \href{https://arxiv.org/abs/2405.19421}{A. Sen and B. Zwiebach, \textit{String Field Theory: A Review}}. 弦场论已经是严格而有力的离壳微扰框架, 并成功描述了 tachyon condensation 等从通常世界面展开看属于非微扰的现象；但一般背景上的高阶计算十分复杂, 而完全背景无关、非微扰完备且普遍可计算的最终形式仍未得到.
+
+\subsubsection*{例：开拓扑 $A$-model 弦场论与 Chern-Simons 理论}
+
+Witten 在 1992 年给出了一个格外清楚的例子, 说明弦场论有时可以约化为熟悉的量子场论. 取拓扑 $A$-model 的靶空间为余切丛
+\begin{equation}
+X=T^*M,
+\end{equation}
+其中 $M$ 是定向三维流形, 并让 $N$ 张 $A$-branes 包裹作为 Lagrangian 子流形的零截面 $M\subset T^*M$. Chan-Paton 自由度给出秩为 $N$ 的向量丛 $E\to M$. 开弦态在拓扑扭曲后约化为
+\begin{equation}
+\mathcal H_{\mathrm{open}}\simeq
+\Omega^*(M,\mathrm{End}\,E),
+\qquad
+Q\longleftrightarrow d,
+\end{equation}
+其中 BRST 算符成为 de Rham differential, 开弦 $*$ 乘积成为微分形式的 wedge product 与矩阵乘法, BPZ pairing 则成为 $M$ 上的积分. ghost number one 的弦场因此正是一个 $U(N)$ 联络一形式
+\begin{equation}
+A\in\Omega^1(M,\mathfrak u(N)).
+\end{equation}
+把这些对应代入开弦场论的二次项和三次项, 得到
+\begin{equation}
+S_A
+=\frac{1}{g_s}\int_M
+\mathrm{Tr}\left(
+\frac12A\wedge dA+\frac13A\wedge A\wedge A
+\right),
+\label{eq:topological-a-model-cs}
+\end{equation}
+这与通常规范化
+\begin{equation}
+S_{\mathrm{CS}}
+=\frac{k}{4\pi}\int_M
+\mathrm{Tr}\left(
+A\wedge dA+\frac23A\wedge A\wedge A
+\right)
+\end{equation}
+的 $U(N)$ Chern-Simons 理论等价, 其中 $g_s$ 与 Chern-Simons level 的关系依赖迹和量子修正的规范约定. 弦场规范变换也正好约化为
+\begin{equation}
+\delta A=d\epsilon+[A,\epsilon].
+\end{equation}
+
+在 $T^*M$ 与零截面的基本构造中, 这个约化在 $\alpha'$ 展开中是精确的. 事实上 $T^*M$ 的辛形式是 exact form $\omega=d\lambda$, 而 canonical one-form 在零截面上满足 $\lambda|_M=0$. 对边界落在 $M$ 上的 holomorphic map $u:(\Sigma,\partial\Sigma)\to(T^*M,M)$,
+\begin{equation}
+\mathrm{Area}(u)=\int_\Sigma u^*\omega
+=\int_{\partial\Sigma}u^*\lambda=0,
+\end{equation}
+所以不存在非恒定的有限面积 worldsheet instantons. 这并不消除模空间边界的退化世界面；这些退化构型正产生 Chern-Simons 的微扰 Feynman diagrams. 若推广到更一般的 Calabi-Yau 靶空间和 Lagrangian branes, 则可以存在非平凡带边界 holomorphic maps 并产生 worldsheet instanton 修正；它们可表现为 Chern-Simons 理论中的 Wilson-loop 型插入, 而不再只是纯粹的局域 Chern-Simons 作用量. 原始论述见 \href{https://arxiv.org/abs/hep-th/9207094}{E. Witten, \textit{Chern-Simons Gauge Theory as a String Theory} (1992)}.
+
+
+\section{弦论史前史}
+
+\subsection{量子场论}
+
+在粒子物理中我们能够观测的基本量是粒子的散射振幅. 量子场论是对当时唯一已知的经典场——电磁场进行量子化（1925-1928）的必然产物（QED）. 从现代的观点看, 微扰量子场论基于给定的场和场满足的作用量, 通过路径积分形式进行量子化；由于场构型空间非常庞大, 我们一般只能得到自由场论的解析结果, 当需要处理具有相互作用的场时, 我们把相互作用当作微扰并对其逐阶计算, 若耦合参数足够小, 则可预期对微扰求和取低阶截断能够得到有效的结果. 微扰量子场论遇到的最大问题是散射振幅微扰计算中无穷大的出现（30年代中期）, 1947-1949 年微扰重整化的提出解决了这一困扰. 随后出现了大量的关键性工作, 为微扰量子场论建立了完备的理论体系, 一系列重要工具变得成熟. 但面对强相互作用, 微扰量子场论的形式不再适用：现在我们都知道 QCD 在低能标是强耦合理论, QCD 的基本场——夸克和胶子, 在低能标会以介子, 重子, 胶球等复合粒子的形式出现；这让当时的人们难以确定强相互作用的基本场论自由度. 于是以 Chew 为首的一群人转向了 S-矩阵自举的方法. 
+
+在通常的场论微扰论中, 我们会先给出一个作用量, 再画 Feynman 图并计算散射振幅. S-矩阵方法的思路则反过来：先要求振幅 $A (s, t)$ 满足一些普适性质, 例如洛伦兹不变性, 幺正性, 解析性, 交叉对称, 以及合适的高能行为等, 然后问这些条件将如何约束强相互作用, 甚至能否决定这个理论的大部分行为. 一个标志性结果是 Chew-Frautschi 图（1961）\cite{ChewFrautschi1961,CappelliEtAl2012}. 
+
+\subsection{Regge 轨迹与 Chew-Frautschi 图}
+考虑 $2\to2$ 散射
+\begin{equation}  
+1(p_{1})+2(p_{2})\longrightarrow 3(p_{3})+4(p_{4}).  
+\end{equation}
+定义 Mandelstam 变量
+\begin{equation}  
+s=(p_1+p_2)^2,\qquad t=(p_1-p_3)^2,\qquad u=(p_1-p_4)^2,  
+\end{equation}
+它们满足约束 $s+t+u=\sum_{i=1}^{4}m_i^2$. 对于等质量粒子 $s$ 通道散射, $s\geq 4m^2,t\leq 0$. 根据交叉对称性 (crossing symmetry), 上述 s-通道的散射振幅 $A(s,t)$ 等于交叉后的 t-通道散射振幅
+\begin{equation}
+A(s,t)=A_{\text{crossed}}(s_{t}=t,t_{t}=s):1(p_{1})+\bar 3(-p_{3})\longrightarrow \bar 2(-p_{2})+4(p_{4})
+\end{equation}
+对于等质量粒子 t-通道, $s_{t}\geq 4m^2,t_{t}\leq 0$, 上式中的 $s_{t}=t\leq 0,t_{t}=s\geq 4m^2$ 是对一般的 t-通道进行解析延拓后的结果. 
+在 t-通道中对散射振幅进行角动量展开
+\begin{equation}
+A_{t}(s_{t},t_{t})=16\pi \sum_{J=0}^\infty(2J+1)a_{J}(s_{t})P_{J}(z_{t})
+\end{equation}
+其中 $z_{t}=\cos\theta_{t}$ 为散射角的参数, 对于等质量粒子的情况
+\begin{equation}
+z_{t}=\cos\theta_{t}=1+\frac{2t_{t}}{s_{t}-4m^2} \, , \, -1\leq z_{t}\leq 1
+\end{equation}
+如果 $t$ -channel 中存在一个自旋为 $J$, 质量为 $M_J$ 的窄共振, 那么
+\begin{equation}
+a_{J}(s_{t})\sim \frac{1}{s_{t}-M_{J}^2+iM_{J}\Gamma_{J}}
+\end{equation}
+再将此振幅解析延拓至交叉 t-通道的区域, 并由交叉对称性回到 s-通道振幅
+\begin{equation}
+A(s,t)=16\pi \sum_{J=0}^\infty(2J+1)a_{J}(t)P_{J}\left( 1+\frac{2s}{t-4m^2} \right)
+\end{equation}
+考虑固定 $t$ 值, 并使 $s\to \infty$, 此时解析延拓得到的 $z=1-\frac{2s}{4m^2-t}\sim -s\to-\infty$, 上式不再能用 Legendre 级数描述, 需要把对整数 $J$ 的和写成 $J$ 复平面上的 Sommerfeld–Watson 积分\cite{Regge1959,CappelliEtAl2012}
+\begin{equation}
+\sum_{J=0}^\infty (2J+1)a_{J}(t)P_{J}(z_{t})\longrightarrow\int_{C}dJ \frac{(2J+1)a(J,t)P_{J}(z_{t})}{\sin \pi J}
+\end{equation}
+在固定 $t$ 值, 并使 $s\to \infty$ 时 $|z_{t}|\sim s,P_{J}(z_{t})\sim z_{t}^J$, 若 $A(J,t)$ 最右边的极点为 $\alpha(t)$
+\begin{equation}
+a(J,t)\sim \frac{r(t)}{J-\alpha(t)}
+\end{equation}
+取该点留数, 得到
+\begin{equation}\label{Regge}
+A(s,t)\sim \beta(t)s^{\alpha(t)}
+\end{equation}
+
+其中 $J$ 复平面的极点轨迹 $\alpha(t)$ 被称为 Regge 轨迹, 它是 $(J,t)$ 空间中的一条轨迹. 若 $\alpha(t)$ 等于某个整数的 $J$, 则对应 $J=\alpha(t)=\alpha(M_{J}^2)$ 的共振, 出现 $1+\bar{3}\longrightarrow R_{J}\longrightarrow \bar{2}+4$ 中的粒子 $R_{J}$, 它的自旋为 $J$, 质量为 $M_{J}$. 解析延拓至 $t\leq 0$ 的区域后, Regge 轨迹也对应原 s-通道高能散射时的渐进行为. 通过对交叉过程 s-通道散射中共振粒子态的测量, 我们可以得到交叉过程 s-通道区域的 Regge 轨迹, 延拓至 s-通道后它描述了高能散射的渐进行为, 即可以把Regge行为理解为对原过程 t-通道极点求和后的结果. $\alpha'=d\alpha /dt$ 称为 Regge 斜率. 
+
+固定$t$, 在高能极限$s\to\infty$时的Regge行为\eqref{Regge}是散射振幅的普遍行为(在极点更复杂的情况会有更复杂的Regge行为). 例如在$\mathrm{e^-\mu^-}\to\mathrm{e^-\mu^-}$ QED 散射中, 树图散射振幅在Regge极限下
+\begin{equation}
+  M(s,t)\sim \frac{e^2}{t}s \implies \alpha_\gamma(t)=1
+\end{equation} 
+即Regge轨迹是固定的, 它反映了 t-通道自旋为1的光子交换的极点. 
+
+Chew-Frautschi 对轻强子的研究结果是, 许多共振近似落在下面的线性轨迹上\cite{ChewFrautschi1961}
+\begin{equation}
+J\simeq \alpha_0+\alpha' M^2
+\end{equation}
+即这些强子谱的角动量和质量近似满足线性关系. 这是 t-通道区域(即$t\geq 0$)的Regge轨迹, 并且对许多介子或重子族都有$\alpha'\sim 0.86(\mathrm{GeV})^{-2}$, 只有$\alpha_0$不同(对于$\rho$介子族, $\alpha_0\sim 0.55$). 并且这样的线性Regge轨迹似乎可以不断穿过整数, 带来无限多的自旋任意大的粒子.
+
+满足这一性质的最简单的基本物体是一根相对论弦. 并且从现代 QCD 的观点来看, 这个结果也可以由长距离 QCD 的有效弦论得到, 参考\href{https://arxiv.org/pdf/hep-th/0201169}{\textit{Semiclassical Quantization of Effective String Theory and Regge Trajectories}}. 
+
+我们可以考虑一个经典的粗糙模型（更有道理的模型可由 Nambu-Goto 作用量讨论, 见尹希 P26-27）：一根张力为 T 的经典开弦绕中点刚性转动, 端点以光速运动. 若角速度为 $\omega$, 则
+\begin{equation}
+E=2\int_0^{1/\omega}
+\frac{T\,dr}{\sqrt{1-\omega^2r^2}}
+=\frac{\pi T}{\omega},
+\end{equation}
+角动量
+\begin{equation}
+J
+=
+2\int_0^{1/\omega}
+\frac{T\omega r^2\,dr}{\sqrt{1-\omega^2r^2}}
+=
+\frac{\pi T}{2\omega^2}.
+\end{equation}
+因此有 $J=\frac{1}{2\pi T}E^2$, 定义 Regge 斜率 $\alpha'=\frac{1}{2\pi T}$, 则
+\begin{equation}
+J=\alpha'M^2
+\end{equation}
+即线性 Regge trajectory 是一维相对论性延展物体的自然性质. 
+
+\subsection{Dolen–Horn–Schmid 对偶}
+考虑 $2\to2$ 强子散射. 在 s-通道中, 根据幺正性, 散射振幅的虚部可以分解为对所有产生中间态粒子的振幅的求和 $1+2\longrightarrow R\longrightarrow 3+4$, 以及一些其他的不那么重要的项, 在低能区这可以由实验测量. 在高能区, 散射振幅可以用交叉 t-通道描述, 即散射振幅在高能区具有 Regge 轨迹所描述的渐进行为. Dolen–Horn–Schmid 表明这两种描述是近似相同的, 它们近似为同一个解析函数在低能和高能下的不同表现, 这也被称为 Dolen–Horn–Schmid 对偶.
+\begin{equation}
+  \int^{N}d\nu\,\nu^k\operatorname{Im}A_{\rm res}\simeq\int^{N}d\nu\,\nu^k\operatorname{Im}A_{\rm Regge}
+\end{equation}
+它表明s-通道共振极点的贡献求和等于t-通道Regge极点贡献之和.
+
+更强的对偶关系是在窄共振近似下, 认为s-通道极点求和等于t-通道极点求和
+\begin{equation}
+A\sim \sum_{\text{s-channel poles}}\sim \sum_{\text{crossed process }s_{t}\text{-channel poles}}\sim \sum_{\text{t-channel poles}}
+\end{equation}
+即
+\begin{equation}
+A\sim \sum_{m} \frac{R_{m}(s)}{m-b(t)}\sim \sum_{n} \frac{\tilde{R}_{n}(t)}{n-\tilde{b}(s)}
+\end{equation}
+在微扰量子场论中, 一般来说我们会对所有通道的极点求和, 而 Dolen–Horn–Schmid 对偶表明如果我们同时对 s-通道与 t-通道进行求和, 则会导致重复计数. 如果我们想简单地用微扰场论的方法计算强子场的 Feynman 图, 那么 s-通道与 t-通道的贡献将非常不一样, 很难想象求和后二者给出相同的结果, 除非我们有无穷多个强子场, 使得两个通道都包含无穷多个过程, 分别求和之后它们可能相等\cite{DolenHornSchmid1967,DolenHornSchmid1968}. 
+
+\section{从对偶共振模型到弦论}
+
+\subsection{Veneziano 振幅}
+
+1968 年, Gabriele Veneziano 在 CERN 的工作中提出了后来称为 Veneziano amplitude 的散射振幅. 他寻找的是一个同时满足以下性质的振幅：具有正确的交叉对称性结构, 表现出 Regge 行为, 共振位于线性 Regge 轨迹上, 并且实现前面所说的 Dolen–Horn–Schmid duality. Veneziano 发现 Euler Beta 函数恰好具有这些性质, 他构造的四点振幅可以简写成（这并非他给出的原始形式）\cite{Veneziano1968,CappelliEtAl2012}
+\begin{equation} 
+A (s, t)=g^2B (-\alpha (s),-\alpha (t))=g^2\frac{\Gamma (-\alpha (s))\Gamma (-\alpha (t))}{\Gamma (-\alpha (s)-\alpha (t))},\qquad \alpha (s)=\alpha_0+\alpha's.
+\end{equation}
+首先, Gamma 函数在非正整数处具有极点, 因此 Veneziano 振幅在 $\alpha(s)=0,1,2,\cdots$ 处具有无穷多个极点,
+\begin{equation}
+A(s,t)
+=
+g^2
+\sum_{n=0}^{\infty}
+\frac{(\alpha(t)+1)_n}{n!}
+\frac{1}{n-\alpha(s)}.
+\end{equation}
+由于 $\alpha(s)$ 是线性的, 这意味着振幅中存在质量不断增大的无穷多个共振态. 每一个极点的留数
+\begin{equation}
+\operatorname*{Res}_{\alpha(s)=n}A(s,t)
+\propto
+\frac{(\alpha(t)+1)_n}{n!}
+\end{equation}
+是 $\alpha(t)$ 的一个 $n$ 次多项式. 注意到散射振幅中一个自旋 $J$ 的中间态会给出角变量的 $J$ 次多项式结构, 因此第 $n$ 层包含越来越高的自旋, 最高自旋大致随 $n$ 线性增长, $J\sim \alpha'M^2$. 由此, Veneziano 振幅自动产生了一个满足线性 Regge 轨迹的无穷粒子谱. 另一方面, 当固定 $t$ 而令 $s\to\infty$ 时, 利用 Gamma 函数的渐进行为可以得到 $A(s,t)\sim s^{\alpha(t)}$, 恰好重现 Regge 理论要求的高能行为. 因此, Veneziano 振幅把看似不同的两类实验性质——低能区无穷多个强子共振和高能区的 Regge 行为——统一到了同一个解析函数中. 
+
+这个振幅可以被展开成无穷多个 $s$-通道极点之和, 也可以完全等价地展开成无穷多个 $t$-通道极点之和. 在一般的场论中我们期待的是 $A=A_s+A_t$ (其中$A_t$是解析延拓后的结果), 而 Veneziano 模型给出的是 $A=A_s=A_t$, 正与 DHS duality 相符. 因此这个模型很快被称为 dual resonance model. 
+
+Veneziano 最初写下的只是一个四点散射振幅, 这在后来被证明是玻色开弦的四快子树图振幅. 随后 Bardakci, Ruegg, Virasoro 等人开始研究更多外线的推广, 例如 M. Virasoro 将 Veneziano 公式推广到对三个变量 $s,t,u$ 完全对称的情况, 这后来被 Shapiro 证明是闭弦的散射振幅；1969 年 Koba 和 Nielsen 给出了任意 $N$ 个外粒子的散射振幅. 这一步非常重要, 因为如果 Veneziano 公式只是四点振幅的一个数学巧合, 它很难被视为一个真正的理论；而 $N$ 点振幅的存在表明背后似乎存在某种统一的动力学结构. 与此同时, Paton 和 Chan 在 1969 年为了把强子的同位旋加入 Veneziano 模型, 引入了后来称为 Chan–Paton factor 的内部指标. 这在后来的弦论中被理解成开弦两个端点携带的内部自由度, 可以携带规范群表示的指标, 在弦论描述规范理论中具有重要作用\cite{Virasoro1969,Shapiro1969,KobaNielsen1969,PatonChan1969}. 
+
+\subsection{从粒子到弦}
+
+1969 年 Fubini, Gordon 和 Veneziano 等人对 dual resonance model 及相关模型的因子化进行了系统研究\cite{FubiniGordonVeneziano1969}. 他们发现, 这些散射振幅在某一极点附近可以分解为对完备中间态求和, 每一项是左右两个较低点振幅的乘积：
+\begin{equation}\label{frac}
+A_N\underset{P^2\to-M_I^2}{\sim}
+\sum_{I}\frac{A_L(\ldots,I)A_R(I,\ldots)}{P^2+M_I^2}.
+\end{equation}
+而中间态可以非常自然地表示为无穷多个谐振子产生算符的激发：不同质量, 角动量的能级对应不同数量, 不同频率的谐振子激发. 这给出很大的提示：一个普通点粒子只有有限的内部自由度, 而一个具有空间延展的一维物体则天然具有无穷多个振动模式. 正如一根琴弦具有基频以及二倍, 三倍等无穷多个谐波, dual resonance model 中出现的无穷谐振子看起来正像某种一维延展物体的 Fourier modes. 
+
+Susskind 在 1969 年的工作中已经注意到 Veneziano 振幅与 harmonic oscillator 结构之间的联系, 并在 1970 年的文章 Structure of Hadrons Implied by Duality 中进一步发展这种图像. Nambu 在 1969 年 Detroit 的 International Conference on Symmetries and Quark Models 上从 Veneziano 振幅的 factorization 出发提出了一维延展物体的解释；他的文章收入 1970 年出版的会议论文集. Nielsen 也沿着 planar “fishnet” diagram 的思路独立形成了类似的 string picture, 他的相关早期工作当时主要以预印本和会议报告形式传播. 
+
+因此通常把 Nambu, Nielsen 和 Susskind 三人视为在 1969–1970 年间独立认识到 dual resonance model 实际上描述相对论性弦的人\cite{Susskind1970,CappelliEtAl2012}. 
+
+\begin{equation}
+\text{dual resonance amplitude}
+\quad\Longrightarrow\quad
+\text{relativistic string interpretation}
+\end{equation}
+
+点粒子在时空中运动扫过一条 worldline, 其相对论性作用量正比于 worldline 的长度；一根一维弦随时间演化则扫过一个二维的 worldsheet, 因此最自然的相对论不变作用量应当正比于 worldsheet 的面积：
+\begin{equation} 
+S_{\mathrm{NG}}=-T\int d^2\sigma\sqrt{-\det\left (\partial_aX^\mu\partial_bX_\mu\right)}.
+\end{equation}
+这就是后来称为 Nambu–Goto action 的弦作用量. $X^\mu(\sigma,\tau)$ 描述世界面上的点在靶时空中的位置, $T$ 为弦张力. 它与前面 Regge 轨迹中的参数满足 $T=1/(2\pi\alpha')$, 因此之前从强子实验中得到的 Regge slope $\alpha'$ 现在获得了清楚的动力学意义：它就是弦张力的倒数尺度. 
+
+Nambu 在 1970 年的 Copenhagen summer school lecture notes 中给出了这种弦作用量的形式；Gotō 在 1971 年发表的论文中则系统研究了相对论性一维连续体, 并证明其量子约束与 Virasoro 在 dual resonance model 中发现的 subsidiary conditions 相同\cite{Goto1971,CappelliEtAl2012}. 至此, 原本从散射振幅出发发现的 dual resonance model 与一个相对论性一维连续体的量子理论真正联系了起来. 
+
+我们现在学习弦论时通常从 Nambu–Goto 或 Polyakov action 出发, 对弦进行量子化, 再推出弦的质量谱和 Veneziano 振幅；历史上的发现顺序恰恰相反：
+
+先发现散射振幅 $\rightarrow$ 从振幅的因子化发现无穷谐振子 $\rightarrow$ 猜测背后是一根弦 $\rightarrow$ 最后才写下描述这根弦的作用量. 
+
+\subsection{开弦与闭弦}
+
+最初的 Veneziano 振幅后来被理解为开弦的树级散射振幅. 对于开弦, 弦的两个端点可以自由运动或带有 Chan–Paton 指标；其激发谱中除了无限多个有质量态之外, 还包含一个无质量自旋 $1$ 的粒子. 后来这个粒子将被解释为规范场. 
+
+1969 年 Virasoro 提出了另一类具有 crossing symmetry 和 Regge behavior 的振幅, 随后 Shapiro 等人进一步研究了相关模型；这些振幅后来被理解为闭弦四点散射振幅的原型, 即今天所说的 Virasoro–Shapiro amplitude\cite{Virasoro1969,Shapiro1969}. 闭弦的左右传播模式彼此独立, 因此其态空间大致是两个开弦振子谱的乘积. 特别是在最低的无质量激发中, 会出现一个二阶对称张量, 一个二阶反对称张量和一个标量；今天我们分别把它们解释为引力子 $g_{\mu\nu}$, B-场 $B_{\mu\nu}$ 和 dilaton $\Phi$. 
+
+但在 1970 年代初, 这个无质量自旋 $2$ 粒子并没有被看成理论的优点. 因为当时的目标仍然是描述强子, 而实验中显然没有一种无质量自旋 $2$ 的强子. 它反而是 dual resonance model 与现实强相互作用不符的一个明显迹象.
+并且如Weinberg-Witten定理所证明：局域守恒的能动张量算符$T_{\mu\nu}(x)$与自旋大于 1 的无质量粒子不相容, 引力子的例外之处在于广义相对论中不存在引力子本身的局域能动张量, 对偶共振模型中无质量自旋为 2 的粒子的存在要么表明这个模型不自洽, 要么表明它是无法由局域量子场论描述的模型\cite{WeinbergWitten1980}.
+
+\subsection{Ghost 与临界维数}
+
+把 dual resonance model 解释为相对论性弦并没有立即解决理论的一致性问题. 由于弦坐标 $X^\mu$ 是 Lorentz vector, 对它的振动模式进行协变量子化时会出现与时间方向有关的负模态. 如果这些鬼真正存在于物理 Hilbert space 中, 理论就不可能满足幺正性. 
+
+Virasoro 在 1970 年发现 dual resonance model 存在一组额外的 subsidiary conditions, 可以用来消除这些不物理态. 后来这些条件被理解为世界面重参数化和共形对称性的量子约束, 也就是今天所说的 Virasoro constraints. 
+
+并且消除鬼以及保持 Lorentz invariance 只有在非常特殊的时空维数下才能完整实现. 1971 年 Lovelace 在研究 one-loop dual amplitude 的奇点结构时首先发现 $D=26$ 的特殊地位；1972 年 Brower 以及 Goddard–Thorn 的 no-ghost theorem 进一步说明了这一点\cite{Lovelace1971,Brower1972,GoddardThorn1972}. 1973 年 Goddard, Goldstone, Rebbi 和 Thorn 直接对相对论性弦进行 light-cone quantization, 证明量子 Lorentz algebra 只有在 $D=26$ 时封闭\cite{GGRT1973}.
+
+因此到了 1973 年左右, 人们已经得到一个相当完整, 但也十分奇怪的理论：它描述的是一根相对论性玻色弦, 具有无穷多个质量和自旋不断升高的激发态, 并且量子一致性要求时空维数为 26. 
+
+今天我们通常用二维共形场论解释这个结果：$D$ 个世界面标量 $X^\mu$ 贡献中心荷 $c=D$, 规范固定产生的 $bc$ ghost 贡献 $c=-26$, 量子 Weyl invariance 要求总中心荷为零, 因此 $D=26$. 但这个解释属于后来 Polyakov 世界面路径积分和二维 CFT 语言成熟之后的现代解释；历史上 $D=26$ 是先从 dual model 的 loop singularity, no-ghost theorem 和 Lorentz invariance 中被发现的. 
+
+\subsection{玻色弦作为强相互作用理论的问题}
+
+到 1970 年代初, dual resonance model 已经基本具有我们今天所说的玻色弦理论的结构, 但它作为强相互作用理论存在几个十分明显的问题：
+\begin{itemize}
+  \item 它要求 $26$ 维时空, 而不是现实中的四维；
+  \item 基态是负质量平方的 tachyon, 表明所选真空不稳定；
+\item 闭弦谱中存在实验上没有对应强子的无质量自旋 $2$ 粒子；
+\item 开弦谱中存在无质量自旋 $1$ 粒子；
+\item 整个理论只有时空玻色子, 无法描述夸克, 电子等费米子. 
+\end{itemize}
+
+强子散射实验的低能区给出强子谱与线性Regge轨迹, 高能区$s\gg 1\mathrm{GeV}^2$实验比较困难. 质心系散射角满足
+\begin{equation}
+  t=-s\sin^2\frac{\theta}{2}
+\end{equation}
+即$s\to\infty$可以分为两个区域:
+\begin{enumerate}
+  \item 固定$t<0$, 且$t$能标在$1\mathrm{GeV}^2$附近；这对应向前散射$\theta\to 0$, 可产生大部分粒子, 并测量Regge行为；
+  \item 固定$\theta$, 即$|t|\sim s\to \infty$, 此区域散射截面很小. 
+\end{enumerate}
+
+第二区域在较晚时期才被研究, 从 1968 SLAC 的深度非弹散射开始；它发现在此区域强相互作用会变弱, 表明强子内部具有近似点状的 parton 自由度, 可以由局域微扰量子场论描述. 在此基础上, 夸克, QCD, 以及 1973 年 QCD 的渐近自由被发现, 强相互作用获得了一个成功的局域量子场论描述\cite{BloomEtAl1969,BreidenbachEtAl1969,GrossWilczek1973,Politzer1973}. 
+
+在弦被认出来之后仅仅几年, 它作为强相互作用基本理论的目标就开始失去物理意义. 但它留下了两个尚未解释的结构：
+\begin{enumerate}
+  \item 怎样在弦论中加入时空费米子？
+  \item 那个看起来完全不应该出现在强子谱中的无质量自旋 $2$ 粒子是什么？
+\end{enumerate}
+
+这两个问题分别通向下一阶段的 Ramond–Neveu–Schwarz 超弦, 以及 1974 年 Scherk–Schwarz 和 Yoneya 对引力子的重新解释. 1973–1974 年, Yoneya 以及 Scherk–Schwarz 将发现：如果不把玻色弦中出现的无质量自旋为 2 的粒子解释成强子, 而是把它解释成引力子, 那么弦论原先最大的缺陷之一反而变成了它最重要的性质. 弦论由此将从一个失败的强相互作用模型, 转变成一个量子引力理论\cite{ScherkSchwarz1974,Yoneya1974}. 
+
+\section{从玻色弦到超弦}
+
+\subsection{Ramond 与 Neveu–Schwarz 扇区}
+
+玻色弦作为基本理论的一个明显问题是, 它的整个激发谱都由 $X^\mu(\sigma,\tau)$ 的振子产生, 因此只能得到时空中的玻色子. 为了描述自然界中的费米子, 需要找到一种机制使弦的某些激发态构成时空 Lorentz 群的旋量表示. 
+
+1970-1971 年, Pierre Ramond 在 Dual Theory for Free Fermions 中首先构造了 dual resonance model 的费米版本. 他在弦的世界面上引入了费米场 $\psi^\mu(\sigma,\tau)$, 并要求其满足周期边界条件. 几乎同时, André Neveu 和 John Schwarz 构造了另一类模型, 对应世界面费米场满足反周期边界条件. 两种边界条件后来分别称为 Ramond sector 和 Neveu–Schwarz sector\cite{Ramond1971,NeveuSchwarz1971}：
+\begin{equation} 
+\psi^\mu (\sigma+2\pi)=+\psi^\mu (\sigma)\quad (\mathrm R),\qquad \psi^\mu (\sigma+2\pi)=-\psi^\mu (\sigma)\quad (\mathrm{NS}).
+\end{equation}
+
+这两种边界条件分别产生时空费米子和玻色子. Ramond sector 中费米零模（对世界面复参数进行 Laurent 展开）满足 Clifford algebra $\{b_0^\mu, b_0^\nu\}=\eta^{\mu\nu}$, 因此可以把 $b_0^\mu$ 看成 gamma matrix. 于是 Ramond sector 的基态必须构成时空 Lorentz 群的旋量表示, 其激发态是时空费米子. 相反, NS sector 的费米场模展开只有半整数模, 没有零模, 因此基态可以是 Lorentz 标量, 其激发态构成各种张量表示, 是时空玻色子. 
+
+\subsection{世界面超对称}
+
+在 $X^\mu$ 和 $\psi^\mu$ 同时存在以后, 人们很快发现它们之间存在一种新的对称性. 1971 年, Jean-Loup Gervais 和 Bunji Sakita 在研究 dual model 的 “supergauge” 结构时发现, 这些变换可以解释为一个二维场论的对称性：世界面上的玻色场 $X^\mu$ 与费米场 $\psi^\mu$ 可以相互变换. 这就是世界面超对称（worldsheet supersymmetry）. Type II 超弦世界面超对称用现在的记号可写为2d $\mathcal{N}=(1,1)$超对称. 这个作用量也是最早的超对称场论作用量之一\cite{GervaisSakita1971}. 
+
+从现代观点看, RNS 弦的世界面理论就是由 $X^\mu$ 和它的费米超伙伴 $\psi^\mu$ 组成的二维超对称场论. 到 1976 年, Deser–Zumino 以及 Brink–Di Vecchia–Howe 分别给出了具有局域世界面超对称和重参数化不变性的 spinning-string 作用量, 将早期 RNS 模型系统地解释成与二维超引力耦合的理论\cite{BrinkDiVecchiaHowe1976,DeserZumino1976}. 
+
+这里要区分两个概念：世界面超对称 $\neq$ 时空超对称. 世界面超对称作用于二维世界面上的 $X^\mu$ 和 $\psi^\mu$；时空超对称则是靶时空 Poincaré 对称性的扩张, 它要求整个弦谱中的时空玻色态与时空费米态成对出现. 1971 年的 RNS 模型首先告诉我们怎样得到时空费米子, 并具有世界面超对称, 但这还不能立即说明整个弦论具有时空超对称. 
+
+这也是超对称历史上一个很有意思的交汇点. 几乎同一时期, Golfand 和 Likhtman 在 1968-1971 年从完全不同的方向研究 Poincaré 代数的扩张, 构造出了四维时空超对称以及超对称 QED；随后 Wess 和 Zumino 在 1973–1974 年使四维超对称场论得到广泛关注\cite{GolfandLikhtman1971,WessZumino1974}. 超对称并不是为了弦论而发明的, 更不是为了后来所谓 Higgs hierarchy problem 而提出的. 
+
+加入世界面费米子以后, 玻色弦的许多问题得到改善, 但量子一致性仍然要求特殊的时空维数. 
+
+和玻色弦一样, 早期研究者首先从无鬼条件和散射振幅的一致性中发现这个限制. 1972 年 Schwarz 对 Neveu–Schwarz model 的研究证明, 在时空维数 $D\leq10$ 时可以消除负模态, 并且 $D=10$ 是临界情况；Goddard 和 Thorn 同年的工作也同时指出, 玻色 Veneziano model 的临界维数为 $26$, 而 Neveu–Schwarz model 的临界维数为 $10$\cite{Schwarz1972,GoddardThorn1972}. 
+
+今天我们会用世界面共形场论更简单地解释这个结果：与玻色弦相比, 除了 $D$ 个 $X^\mu$ 外, 现在还有 $D$ 个世界面费米场 $\psi^\mu$ 以及相应的 superghost；要求总 conformal anomaly 消失就得到 $D=10$ (或$D<10$并加上额外的共形场论扇区). 而如何从十维得到现实的四维时空, 将在后来变成弦紧致化的核心问题. 
+
+\subsection{GSO 投影与时空超对称}
+
+R 和 NS 两个 sector 结合以后, 我们已经同时拥有时空玻色子与费米子, 但还没有得到真正令人满意的超弦. 首先, NS sector 的基态仍然是一个 tachyon. 其次, R 和 NS sector 中的玻色态与费米态数量并不逐能级相等, 没有时空超对称. 即在世界面上具有超对称, 并不自动保证弦的整个时空谱具有超对称. 玻色态与费米态并不完全对应, 或许意味着理论中存在太多态, 需要以某种一致的方法选择其中的一部分. 
+
+1976 年, Ferdinando Gliozzi, Joël Scherk 和 David Olive 发现, 可以对 RNS string 的 Hilbert space 施加一个特殊投影, 去掉一部分弦态, 同时保持理论的一致性. 这后来被称为 GSO projection\cite{GliozziScherkOlive1976,GliozziScherkOlive1977}. 
+
+在 NS sector 中, 这个投影恰好去掉了 tachyon, 而保留最低的无质量矢量态；在 Ramond sector 中, 它则选择时空旋量的一种 chirality. 经过投影后, 每一个质量能级上的时空玻色态数与费米态数完全相等. 因此 RNS string + GSO projection $\longrightarrow$ spacetime supersymmetric string.
+
+Gliozzi, Scherk 和 Olive 在 1976 年的短文中已经指出, 经过这种选择后的 spinor dual model 不仅在二维世界面上具有超对称, 而且表现出嵌入时空中的超对称；1977 年的长文进一步研究了它与 supersymmetric Yang–Mills 和 supergravity 的关系. 
+
+不过这里的历史需要稍微谨慎. GSO 的结果从整个弦谱的玻色—费米自由度相等等性质强烈表明存在 spacetime supersymmetry, 但 RNS formalism 并不使这一对称性显然. 直到 1981 年, Michael Green 和 John Schwarz 才直接构造时空 supersymmetry operator, 并证明投影后的十维开弦物理态确实组成 spacetime supersymmetry multiplets\cite{GreenSchwarz1981}. 
+
+\subsection{Type IIA, Type IIB, Type I}
+
+对于闭弦, 左行和右行传播模式彼此独立, 因此左右两边的世界面费米子都可以独立选择 NS 或 R 边界条件. 由此产生四个 sector：NS–NS, R–R, NS–R, R–NS. 其中 NS–NS 和 R–R sector 给出时空玻色子, 而 NS–R 和 R–NS sector 给出时空费米子. 
+
+对左右 Ramond sector 做 GSO projection 时, 还可以选择两个旋量具有相同或相反的 chirality. Green 和 Schwarz 在 1982 年发展 manifest spacetime-supersymmetric 的 light-cone string formalism 时系统得到两种十维闭超弦理论：左右时空超对称旋量 chirality 相反的理论后来称为 Type IIA, chirality 相同的称为 Type IIB\cite{GreenSchwarz1982}. 
+
+它们的低能无质量谱分别对应十维 Type IIA 和 Type IIB supergravity. 和玻色弦相比, GSO 投影后的 Type II superstring 不再含有 tachyon, 并具有完整的十维时空超对称. 
+
+对于开弦, 自洽性要求这个理论同时包含闭弦, 因为开弦相互作用即为开弦顶点的连接和分开, 这是局域的, 因此开弦的两个顶点也应该可以连接到一起形成闭弦.
+或者从幺正性的角度，开弦在环面的单圈振幅在横向通道上等价于闭弦的树图振幅，因此完备的开弦理论包含闭弦扇区。
+在十维时空中自洽的开弦超弦理论是 Type I 超弦, 它包含无定向的开弦和闭弦：出现无定向这一条件的原因可以理解为, 在时空中加入开弦, 相当于引入 D9-膜, 而这些膜会携带非零的 R-R 荷, 自洽性条件要求总的 R-R 荷为零；如果想通过引入数量相等的反 D9-膜来抵消, 则 D9-anti-D9 对会产生快子态, 即表明它们是不稳定的态, 会发生湮灭；另一种方法是引入不可定向面 O9-plane, 有 $Q_{\mathrm{O9^-}}=-32Q_{\mathrm{D 9}}$, 表明一种满足 RR 10-form 蝌蚪图抵消的方式是引入 32 个 D9-膜和一个 O9-平面, D-膜和 O-平面的引入使得理论具有 $\mathrm{SO}(32)$ 规范对称性, 即 Type I $\mathrm{SO}(32)$ 超弦, 它的无质量态包含开弦对应的规范扇区（10d SYM 中的矢量多重态）, 以及闭弦对应的超引力扇区（10d $\mathcal{N}=1$ 超引力多重态）\cite{Polchinski1995}. 
+
+\subsection{弦论的第一次低潮}
+Type I 超弦具有几个非常特殊的性质：
+\begin{itemize}
+  \item 包含无质量自旋 $1$ 粒子, 可以产生规范理论；
+  \item 包含无质量自旋 $2$ 粒子, 并在低能极限产生 Einstein gravity；
+  \item 可以包含时空费米子；
+  \item GSO 投影后具有时空超对称；
+  \item 有质量弦态形成无穷塔, 而低能有效场论是 supergravity 和 SYM. 
+\end{itemize}
+
+尽管 1974 年人们已经认识到弦论可能是一种量子引力理论, 这个想法并没有成为主流. 原因是当时粒子物理正在经历标准模型的巨大成功. 非阿贝尔规范理论的可重整性, 渐近自由, QCD 和弱电统一使量子场论重新成为粒子物理的中心. 相比之下, 弦论要求十维或二十六维时空, 而且还没有令人信服的方法解释为什么现实世界只有四个大的维度. 
+
+一个自然的问题是这个十维理论能否通过 Kaluza-Klein 紧致化得到四维的标准模型. Witten 在 1981-1983 年研究过 Kaluza-Klein 理论, 结论是高维非手性理论通过 Kaluza-Klein 紧致化得到四维手性理论非常困难, 特别是无规范场背景时\cite{Witten1981KK}；所以当时人们的研究重点放在了包含规范场的 Type I 超弦. 但另一个关键问题仍然悬而未决：这样一个十维的手性量子理论是否自洽, 即它有没有规范反常和引力反常吗？在此之外, 弦论还有许多尚不清楚的问题, 例如弦论应该选择什么规范群？弦论的圈振幅是否真正有限？
+
+因此从 1970 年代中期到 1984 年, 弦论只由相对少数的研究者继续发展. 这一时期有时被称为弦论的第一次“黑暗时期”. 
+
+\section{第一次超弦革命}
+
+\subsection{Green–Schwarz 反常抵消}
+
+经典作用量具有的对称性未必是量子理论的真正对称性. 如果规范对称性发生反常, 则不物理的自由度无法从 Hilbert space 中消除, 理论的幺正性和一致性都会遭到破坏. 因此一个含有规范反常的理论不能成为基本量子理论. 
+
+十维 $\mathcal N=1$ 超引力和超 Yang–Mills 理论是手征理论, 因此可能同时存在规范反常, 引力反常以及规范—引力混合反常. Alvarez-Gaumé 和 Witten 在 1983–1984 年对高维引力反常进行了系统研究, 使这个问题变得非常尖锐：看起来十维手征超弦很可能因为反常而失败（Type IIB 反常多项式抵消, 但无规范场）\cite{AlvarezGaumeWitten1984}. 
+
+1984 年, Green 和 Schwarz 发现了一个出乎意料的反常抵消机制：对于 10d $\mathcal{N}=1$ 超引力-超杨-Mills 理论, 当规范群为 $\mathrm{SO}(32)$ 或 $E_{8}\times E_{8}$ 时, 规范反常, 引力反常和混合反常能够通过在作用量中新增局域项（不需要引入额外的场）抵消, 即证明了 Type I $\mathrm{SO}(32)$ 超弦（的最低阶有效场论）是一个自洽的量子引力理论, 并且他们推测 10d $\mathcal{N}=1$ $E_{8}\times E_{8}$ 超引力也可能是某个无反常的弦论的低能有效理论\cite{GreenSchwarz1984}. 
+
+Green 和 Schwarz 后来回忆, 这一结果使理论物理学界对弦论的态度几乎在一夜之间发生改变. 1984 年前只有相对少数的人研究超弦, 而反常抵消之后, 大批粒子物理学家进入这一领域. 这一时期通常被称为第一次超弦革命（first superstring revolution）. 
+
+\subsection{杂化弦}
+
+1984 年末至 1985 年, Princeton 的 David Gross, Jeffrey Harvey, Emil Martinec 和 Ryan Rohm——后来常被称为 Princeton String Quartet——构造了一种全新的弦理论, 即 heterotic string\cite{GrossHarveyMartinecRohm1985}. 
+
+这个构造利用了闭弦左右传播模式彼此独立这一性质. 对普通 Type II string, 左行和右行部分都是十维 superstring；而 heterotic string 一边使用 $D=26$ 的 bosonic string, 另一边使用 $D=10$ 的 superstring. 因为两边最终必须描述同一个十维时空, 所以玻色弦一侧“多出来”的 $16$ 个自由度不能解释为额外的非紧时空维度, 而被紧致化为内部自由度. 量子一致性要求这 $16$ 维内部自由度形成一个 even self-dual lattice, 而十六维恰好只有两种这样的格结构, 对应 $\mathrm{Spin}(32)/\mathbb Z_2$ 和 $E_8\times E_8$. 于是 Green–Schwarz 反常分析中出现的两个特殊规范群, 都获得了真正的弦论实现. 特别是 $E_8\times E_8$ heterotic string 很快成为构造四维统一模型的主要候选, 因为它具有足够大的规范群, 可以经过对称性破缺包含标准模型的$\mathrm{SU}(3)\times \mathrm{SU}(2)\times U(1)$, 同时又具有十维 $\mathcal N=1$ 超对称和手征费米子. 
+
+到 1985 年, 人们因此得到了五种自洽的十维超弦理论：
+\begin{itemize}
+  \item Type IIA；
+  \item Type IIB；
+  \item Type I $\mathrm{SO}(32)$；
+  \item heterotic $\mathrm{SO}(32)$；
+  \item heterotic $E_8\times E_8$. 
+\end{itemize}
+
+
+当时这些被认为是五种彼此不同的基本理论. 为什么自然界要选择其中一种, 以及为什么会恰好有五种理论, 完全没有答案. 这个问题要到十年后的第二次超弦革命才会被解决. 
+
+\subsection{从十维到四维：Calabi–Yau 紧致化}
+
+我们生活在四维宏观时空. 对于超弦多出来的六个空间维度, Kaluza–Klein 理论提供了一个基本思想：额外维度可以卷曲在非常小的紧空间中. 于是十维时空可以写成近似的乘积
+\begin{equation} 
+M_{9,1}\simeq M_{3,1}\times X_6,
+\end{equation}
+其中 $X_6$ 是一个非常小的六维紧流形.
+
+如果希望四维低能理论具有 $\mathcal N=1$ 超对称（既是四维最少的超对称, 也是唯一允许手性表示的超对称）, 十维超对称参数在内部空间中必须存在一个协变常量的旋量. 十维 $\mathcal{N}=1$ 超对称的 16 个超对称荷构成 $\mathrm{Spi n}(9,1)$ 的 Majorana 旋量表示, 即由 Majorana 条件约束后的 Dirac 表示 $\mathbf{16}$, 约化到 $\mathrm{Sp in}(3,1)\times \mathrm{Sp in}(6)\cong \mathrm{SL}(2,\mathbb{C})\times \mathrm{SU}(4)$ 后表示分解为
+\begin{equation}
+\mathbf{16}\to (\mathbf{2}_{\mathrm{L}},\mathbf{4})+(\mathbf{2}_{\mathrm{R}},\bar{\mathbf{4}})
+\end{equation}
+再施加 Majorana 条件,  $\mathbf{2}_{\mathrm{L}}+\mathbf{2}_{\mathrm{R}}$ 构成一个四维 Majorana 旋量. 四维理论的超对称数目即 Majorana 旋量守恒超荷的数目 $\mathcal{N}$ , 4d $\mathcal{N}=1$ 超对称要求在六维中超对称破缺为 $\mathbf{1}\subset \mathbf{4}$. 六维空间转动群为 $\mathrm{Spin}(6)\cong \mathrm{SU}(4)$, 其 Weyl spinor $\mathbf 4$ 在 $\mathrm{SU}(3)$ 子群下分解为 $\mathbf 4\rightarrow\mathbf 3+\mathbf1$. 如果内部空间的和乐从一般的 $\mathrm{SO}(6)$ 降低到 $\mathrm{SU}(3)$, 其中的单态 $\mathbf1$ 就不会在沿内部空间平行移动时发生旋转, 因此对应一个协变常量旋量. 十维超对称的这一部分能够在四维中保存下来, 得到 $\mathcal N=1$ 超对称. 具有 $\mathrm{SU}(3)$ 和乐的紧 Ricci-flat Kähler threefold 正是 Calabi–Yau threefold. 更准确地说, Calabi–Yau threefold 的和乐包含于 $\mathrm{SU}(3)$；对于一般的不可约单连通 CY3, 和乐为 $\mathrm{SU}(3)$. 
+
+Calabi 在 1950 年代提出一个关于 Kähler 流形上 Ricci-flat metric 存在性的猜想, 丘成桐在 1976 年完成了这一猜想的证明\cite{Yau1977,Yau1978}:
+“1976年, 我们开车横越美国, 准备到加州之后结婚（后来也如愿结婚了）. 那是一段难忘的旅程, 路上风光旖旎, 我们正在热恋之中, 规划着如何共度人生. 但我得承认, 我可不只是有点分心, 卡拉比猜想还在我的心里憋着, 尤其是极难证出的零阶估计. 我花了整整一年的时间, 最后在1976年9月, 婚礼刚过之后, 才求出零阶估计, 证明于是大功告成. 看来, 我需要的正是婚姻生活. ”
+
+Strominger 率先发现了 Calabi-Yau 流形, 他回忆道：“我在图书馆中找到丘成桐的论文, 但是大半都读不懂, 不过从我理解的那一小部分, 我意识到这个流形正是我们需要的. ”当时, Strominger 先打电话给丘成桐, 确定他对文章的理解是正确的. 丘成桐告诉他, 他是对的, 丘成桐回忆道“这一刻我领悟到, 经过八年的守候, 物理学家终于找到了 Calabi-Yau 流形了. ”
+
+Strominger 与 Candelas 在与曾经是丘成桐的博士后研究员的 Horowitz 合作；当 Strominger 回到 Princeton 拜访 Witten 时, 发现 Witten 已经沿着另一条不同的思路, 从闭弦世界面的二维共形场论的讨论得到内在空间必须是 Calabi-Yau 流形, 这也暗示了 Calabi-Yau 紧致化是进行紧致化最自然的方法. 
+
+1985 年, Philip Candelas, Gary Horowitz, Andrew Strominger 和 Edward Witten 在 Vacuum Configurations for Superstrings 中系统研究了这种紧致化, 证明 Calabi–Yau 类型的内部空间能够产生四维 $\mathcal N=1$ supersymmetric vacuum, 并研究了由此得到的规范群和手征费米子谱. 这篇论文成为弦紧致化和弦唯象学的奠基工作之一\cite{CandelasHorowitzStromingerWitten1985}. 
+
+\subsection{$E_8\times E_8$, $E_6$ 与标准模型}
+
+Calabi–Yau 紧致化之所以在 1985 年引起巨大兴趣, 不只是因为它把十维变成四维, 还因为它能够产生非常接近粒子物理需要的结构. 
+
+在最简单的 heterotic standard embedding 中, 把 Calabi–Yau 的 $\mathrm{SU}(3)$ spin connection 嵌入 $E_8\times E_8$ 中一个 $E_8$ 的规范联络. 这是由于杂化弦 Green-Schwarz 修正的 Bianchi identity, 要求无NS5-膜时有
+\begin{equation}
+dH=\frac{\alpha'}{4}(\mathrm{tr}(R\wedge R)-\mathrm{tr}(F\wedge F))
+\end{equation}
+其中 ${R^i}_{j}={R^i}_{jk\bar{l}}dz^k\wedge d\bar{z}^{\bar{l}}$, $F$ 为杂化弦规范场强. 一般来说 $\mathrm{tr}(R\wedge R)$ 是非平凡的, 它对应 Calabi-Yau 流形切丛的第二陈类；Bianchi identity 要求 $(\mathrm{tr}(R\wedge R)-\mathrm{tr}(F\wedge F))$ 是平凡的上同调, 最简单的选取方法就是令自旋联络等于规范联络, 即将 Calabi-Yau 的 $\mathrm{SU}(3)$ 结构群嵌入 $E_{8}\times E_{8}$ 中. 由于 $E_8\supset E_6\times \mathrm{SU}(3)$, 这会把其中一个 $E_8$ 破缺为 $E_6$\cite{CandelasHorowitzStromingerWitten1985}, 有
+\begin{equation}
+\mathbf{248}=(\mathbf{78},\mathbf1)\oplus(\mathbf1,\mathbf8)\oplus(\mathbf{27},\mathbf3)\oplus(\bar{\mathbf{27}},\bar{\mathbf3})
+\end{equation}
+且在 $E_{6}\supset \mathrm{SO}(10)\supset \mathrm{SU}(5)\supset \mathrm{SU}(3)\times \mathrm{SU}(2)\times U(1)$ 下, $E_{6}$ 的表示 $\mathbf{27}$ 给出 $\mathrm{SO}(10)$ 的表示
+$\mathbf{27}\to \mathbf{16}\oplus \mathbf{10}\oplus \mathbf{1}$, 继续约化到 $\mathrm{SU}(5)$：$\mathbf{16}\to \mathbf{10}\oplus \overline{\mathbf{5}}\oplus\mathbf{1}$, $\mathbf{10}\to \mathbf{5}\oplus \overline{\mathbf{5}}$, 其中 $\mathbf{10}=Q\oplus u^c\oplus e^c$，$\bar{\mathbf5}=d^c\oplus L$. 即 $E_6$ 是 grand unified theory 中一个很自然的规范群, 能够容纳一整代标准模型费米子. 并且在 standard embedding 中, 净 generation number 与 Euler characteristic 满足 $N_{\mathrm{gen}}-N_{\mathrm{anti}}\propto \frac{\chi(X)}2$, 因此寻找三代费米子的模型会自然地引出 $|\chi(X)|=6$ 的 Calabi–Yau threefold. 
+
+当然这只是早期 heterotic standard embedding 中的特殊关系, 并不是所有弦紧致化都要求 Calabi–Yau 的 Euler characteristic 等于 $\pm6$. 但在 1980 年代中期, 它给人极大的鼓舞：自然界的粒子代数竟然可能与一个六维空间的拓扑相关. 这也开启了弦论与代数几何之间此后持续至今的紧密关系. 
+
+1985年Strominger与Witten问丘成桐能否构造出欧拉示性数为$\pm 6$的Calabi–Yau三维流形. 丘成桐在前往芝加哥参加弦论大会的飞机上找到了一个构造：首先取 $\mathbb{P}^3$ 中的两个三次超平面的卡式积, 再取它的复三维截面, 得到的六维流形具有三阶对称, 商去后即可得到满足条件的流形. 在弦论大会后, Green 等人用丘成桐的流形得到了更加接近标准模型的结果, 但仍不是最终正确的空间；Candelas 和他的学生用丘成桐的方法构造出几千种 Calabi-Yau 流形, 这带来了新的问题, 即弦论比当初大家预期的要复杂得多, Strominger 在 1984 年已意识到“弦论的唯一性已经显得可疑”\cite{Yau2006Spacetime,TianYau1987,CandelasDaleLutkenSchimmrigk1988}. 
+
+
+\subsection{从几何到世界面共形场论}
+
+Calabi–Yau 紧致化马上带来了一个技术困难：丘成桐的定理保证 Ricci-flat 度规的存在, 但通常并不能把这个度规显式写出来. 因此即使知道一个 Calabi–Yau 流形是允许的弦背景, 我们往往仍然不能直接解出对应的二维 nonlinear sigma model. 但另一方面, 从弦的定义来看, 真正基本的对象并不是一个 Calabi–Yau 流形本身, 而是描述弦在这个背景中传播的二维共形场论. 本质上超弦需要十维时空只是为了消去世界面超共形代数的中心荷：四维宏观空间中的超弦的左动/右动部分具有 $c=6$, 鬼场的中心荷为 $-26+11=-15$, 即实际上我们只需要一个额外的 $c=9$ 的共形场论, 不管它是否是一个可以被诠释为紧致化空间的 NLSM, 它甚至可以是一个非常抽象的 CFT. 于是第一次超弦革命后, 一个重要研究方向转向了二维 CFT：是否可以直接构造满足一致性条件的显式的世界面共形场论？
+
+1987 年, Doron Gepner 利用若干 $\mathcal N=2$ minimal models 的张量积, 构造了一大类可以精确求解的弦真空, 即 Gepner 模型. 这些模型具有正确的总中心荷和时空超对称, 而且它们的质量为零的谱与某些 Calabi–Yau 紧致化精确对应. 例如 $(3)^5$ 即五个 $k=3$ minimal model 的零质量谱与 Type IIA/IIB 在 quintic threefold 紧致化得到的零质量谱相符, 它们也被证明对应 quintic 模空间中的一个特殊点(Landau-Ginzburg orbifold point). 这件事改变了人们对弦紧致化的理解：同一个弦真空可以具有一个几何的 Calabi–Yau 描述, 也可以在世界面上表现为一个完全代数化的 $\mathcal N=2$ SCFT. Calabi–Yau 几何因此不是弦论中唯一基本的语言, 而只是弦论模空间某些区域中最自然的一种描述\cite{Gepner1987,GreeneVafaWarner1989,Witten1993Phases}. 
+
+\subsection{镜像对称}
+
+在研究这些 $\mathcal N=(2,2)$ worldsheet CFT 和 Calabi–Yau compactifications 的过程中, 人们发现了后来称为 mirror symmetry 的现象. 在一个 Calabi–Yau threefold $X$ 上, 主要存在两类几何形变：Kähler structure moduli 和 Complex structure moduli, 它们分别由 Hodge numbers $h^{1,1}(X)$ 和 $h^{2,1}(X)$ 计数. 
+
+镜像对称最早的提示出现在 1987 年, L. Dixon 与 Gepner 观察到有些不同的 K3 曲面可以对应相同的共形场论. 第一篇关于镜像对称的论文来自 W. Lerche, Vafa, N. Warner, 他们宣称两个拓扑形态不同的 Calabi-Yau 流形可以得到相同的共形场论(时空上 IIA/$X$ 与 IIB/$\widetilde X$ 对应，A-model instantons 映到 B-model periods), 因此具有相同的物理性质. 1988 年秋天, Brian Greene 与 Vafa 聊天后他加入了相关的研究, 他们合作给出了从 Gepner 模型到 Calabi-Yau 流形的对应规则；随后他们开始研究更深层的问题, 即对 Gepner 模型做一些对称变换, 结果是共形场论没有发生实质性的改变, 但却对应着拓扑与几何很不相同的 Calabi-Yau 流形. 1989 年在 Brian Greene 他们的工作之外出现了其他的证据, Candelas 通知 Brian Greene, 他和两位学生在检查了他们用电脑构造的大量 Calabi-Yau 流形后, 发现了惊人的模式, 即这些流形似乎会成对出现, 并且它们的 Hodge 数具有对偶性, 即呈现镜像对称的现象.  B. Greene 和 Plesser 在 1990 年给出了一个系统而明确的构造, 找到成对的 Calabi–Yau 流形 $X$ 和 $\widetilde X$, 满足 $h^{1,1}(X)=h^{2,1}(\widetilde X)$, $h^{2,1}(X)=h^{1,1}(\widetilde X)$, 两者描述等价的弦物理. 它们的 Euler characteristic 满足 $\chi(\widetilde X)=-\chi(X)$. 这种现象被称为镜像对称（mirror symmetry）. 从粒子物理的角度看, 这说明不同的内部几何并不一定对应不同的物理理论；弦论存在比普通 Kaluza–Klein 理论深得多的几何等价关系\cite{LercheVafaWarner1989,GreeneVafaWarner1989,CandelasLynkerSchimmrigk1990,GreenePlesser1990}. 
+
+丘成桐很快安排了 Brian Greene 向数学家的演讲, 并建议他用 quantum cohomology 这个词来描述镜像对称. 大约在一年后, 镜像对称的下一步发展取得了引入注目的成果. Candelas, Xenia de la Ossa, P. Green, L. Parks 四个人表明镜像对称可以解决一个计数几何学中的问题, 即能够计算五次三维形中有理曲线的数目\cite{CandelasDeLaOssaGreenParkes1991}. Quintic threefold 中有理曲线数目的问题被 Katz 称为 Clemens 猜想：令 $X\subset \mathbb{P}^4$ 为一个一般的五次超曲面, $d$ 是一个正整数, 则 $X$ 中 $d$ 次有理曲线的数目是有限的\cite{Katz1986}. 可以选择参数化并把有理曲线写为 $f:\mathbb{P}^1\to X$, 由五个 $d$ 次齐次多项式给出
+\begin{equation}
+f(x_{0},x_{1})=(f_{0}(x_{0},x_{1}),\cdots,f_{4}(x_{0},x_{1}))
+\end{equation}
+$X$ 由五次齐次多项式定义为
+\begin{equation}
+F(x_{0},\cdots,x_{4})=\sum_{|I|=5}c_{I}x^I
+\end{equation}
+映射 $f$ 的像落在 $X$ 中要求
+\begin{equation}
+F(f_{0}(x_{0},x_{1}),\cdots,f_{4}(x_{0},x_{1}))\equiv 0
+\end{equation}
+首先 $(x_{0},x_{1})$ 的五个 $d$ 次齐次多项式减去 $\mathbb{P}^4$ 中的一个射影关系后共有 $5(d+1)-1=5d+4$ 个参数, 上式给出 $5d+1$ 个约束；选择参数化时具有任意性, 可取 $g_{0}=a_{00}x_{0}+a_{01}x_{1},g_{1}=a_{10}x_{0}+a_{11}x_{1}$, 并构造 $\tilde{f}(x_{0},x_{1})=(f_{0}(g_{0},g_{1}),\cdots,f_{4}(g_{0},g_{1}))$, 则得到的曲线完全一样, 重参数化群 $\mathrm{PGL}(2,\mathbb{C})=\mathrm{GL}(2,\mathbb{C}) /\mathbb{C}^*$ 维度为 $3$, 最后我们发现约束的数量等于参数的数量, 可猜测只有有限个解. 
+
+Schubert 在 19 世纪证明了五次三维形有 2875 条一次有理曲线；Clemens 在 1980 年代提出了相关的猜想；1986 年 Sheldon Katz 解出了二次的情况, 数目为 609250. 而 Candelas 等人解决的是三次的情况, 数量为317206375, 并且构造了任意次的生成函数. 在 1991 年 5 月, 丘成桐获得了一个机会, 安排了一场让数学家与物理学家讨论镜像对称的会议, 地点在 MSRI. Candelas 在会议上报告了他们在 Schubert 问题上的结果, 但是他的数目与数学的结果, 即 Ellingsrud 和 Strømme 得到的2682549425不符. 丘成桐回忆道：“当时出席的代数几何学者态度比较傲慢, 认为错的一定是物理学家”；数学家 A. Gathmann 解释道：“因为数学家并不知道物理学家在做什么, 他们使用的是全然不同的计数, 这些计数不但在数学上前所未见, 而且看起来也不像是证明过的. ”Candelas 和 Green 与丘成桐当时一直在寻找计算过程是否有误, 丘成桐认为可能是在将无穷维路径积分局域化为有限维时出现了问题, 但他们都找不到推理过程的缺陷. 事情在大约一个月后得以理清, Ellingsrud 和 Strømme 发现他们的电脑程序有错, 修复漏洞后他们得到了与 Candelas 等人完全相同的答案. 于是第一次超弦革命产生了一个当初完全没有预料到的结果：一个为了统一量子引力与粒子物理而发展的理论, 开始反过来预测纯代数几何中的答案\cite{CandelasDeLaOssaGreenParkes1991,Morrison1993,EllingsrudStromme1995,EllingsrudStromme1996}. 
+
+\subsection{第一次革命留下的问题}
+
+1984 年以后, 人们一度希望弦论的极强一致性条件能够唯一地决定自然界. Green–Schwarz 精确的反常抵消机制表明十维超弦理论非常稀少；杂化弦又给出了包含大统一规范群和手征费米子的模型；Calabi–Yau 紧致化进一步展示了得到四维 $\mathcal N=1$ 粒子物理的具体途径. 这种发展让人形成一个乐观的期待：也许只要把弦论的一致性条件研究到底, 就会唯一得到标准模型. 
+
+但紧致化研究很快显示情况并非如此. Calabi–Yau threefold 并不是唯一的；即使固定一个 Calabi–Yau, 也存在大量 Kähler moduli, complex-structure moduli, vector bundle 的选择. 不同选择可以产生不同的四维规范群, 粒子谱和耦合常数. 更重要的是, 微扰弦论本身并不能告诉我们自然界为什么选择其中某一个真空. 到 1980 年代末, 人们已经知道五种满足所有自洽性检验的十维超弦理论：Type IIA, Type IIB, Type I, $\mathrm{SO}(32)$ heterotic 和 $E_8\times E_8$ heterotic. 如果弦论是基本理论, 为什么自然界会给我们五个不同的候选？微扰弦论无法回答这个问题, 因为每一种弦论都是围绕自己的弱耦合极限定义的. 答案最终来自人们开始认真研究过去难以控制的非微扰和强耦合物理. 1994–1995 年之后, T-duality, S-duality, D-brane 和 M-theory 将揭示：这五种弦论其实并不是五种不同的基本理论, 而是同一个更大理论在不同极限中的表现. 这将引发第二次超弦革命\cite{Witten1995,Polchinski1995}. 
+
+
+
+
+
+
+\bibliographystyle{unsrt}
+\bibliography{ref}
+
+
+
+
+
+
+
+
+
+\end{document}
